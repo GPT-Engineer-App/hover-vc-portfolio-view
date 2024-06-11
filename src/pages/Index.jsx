@@ -1,18 +1,36 @@
-// Update this page (the content is just a fallback if you fail and example)
-// Use chakra-ui
-import { Container, Text, VStack } from "@chakra-ui/react";
+import { Container, SimpleGrid, Box, Text, VStack, Button } from "@chakra-ui/react";
+import InvestmentCard from "../components/InvestmentCard";
 
-// Example of using react-icons
-// import { FaRocket } from "react-icons/fa";
-// <IconButton aria-label="Add" icon={<FaRocket />} size="lg" />; // IconButton would also have to be imported from chakra
+const investments = [
+  {
+    logo: "https://via.placeholder.com/100",
+    yearInvested: "2010",
+    companyStatus: "IPO/Public NYSE: NET",
+    investmentStage: "Early",
+    sectors: "Technology, Enterprise",
+  },
+  {
+    logo: "https://via.placeholder.com/100",
+    yearInvested: "2012",
+    companyStatus: "Private",
+    investmentStage: "Growth",
+    sectors: "Healthcare, Biotech",
+  },
+  // Add more investments as needed
+];
 
 const Index = () => {
   return (
-    <Container centerContent maxW="container.md" height="100vh" display="flex" flexDirection="column" justifyContent="center" alignItems="center">
-      <VStack spacing={4}>
-        <Text fontSize="2xl">Your Blank Canvas</Text>
-        <Text>Chat with the agent to start making edits.</Text>
-      </VStack>
+    <Container maxW="container.xl" py={10}>
+      <Box mb={6}>
+        <Text fontSize="4xl" fontWeight="bold">Enterprise</Text>
+        <Button mt={2} colorScheme="blue">View All</Button>
+      </Box>
+      <SimpleGrid columns={[1, null, 3]} spacing="40px">
+        {investments.map((investment, index) => (
+          <InvestmentCard key={index} {...investment} />
+        ))}
+      </SimpleGrid>
     </Container>
   );
 };
